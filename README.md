@@ -1,5 +1,5 @@
-# Simple Go
-A simple HTTP application written in Go
+# Kargo Sample Application
+A simple HTTP application written in Go to demo [Kargo](https://kargo.akuity.io/)
 
 To enable the `/greet` route modify:
 
