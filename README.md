@@ -1,2 +1,2 @@
-# kargo-demo-app
-Sample Application for Demoing Kargo
+# Simple Go
+A simple HTTP application written in Go
