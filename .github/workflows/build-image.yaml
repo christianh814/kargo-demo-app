@@ -1,0 +1,41 @@
+name: Build and Push Image to Quay
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build and push image
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set Build Variables
+      id: set-vars
+      run: |
+        echo "image_tag=$(echo $GITHUB_SHA  | cut -c1-6)" >> $GITHUB_OUTPUT
+
+    - name: Build Image
+      id: build-image
+      uses: redhat-actions/buildah-build@v2.12
+      with:
+        image: kargo-demo-app
+        tags: latest ${{ steps.set-vars.outputs.image_tag }}
+        containerfiles: |
+          ./Dockerfile
+
+    - name: Push To quay.io
+      id: push-to-quay
+      uses: redhat-actions/push-to-registry@v2.7
+      with:
+        image: ${{ steps.build-image.outputs.image }}
+        tags: ${{ steps.build-image.outputs.tags }}
+        registry: quay.io/christianh814
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+    - name: Print image url
+      run: echo "Image pushed to ${{ steps.push-to-quay.outputs.registry-paths }}"
