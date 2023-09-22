@@ -23,7 +23,6 @@ func Start() {
 	*/
 
 	// try to start the app and log output
-	log.Info("TEST UPDATE FOR KARGO")
 	log.Info("Starting server on port " + HttpPort)
 	log.Fatal(http.ListenAndServe(":"+HttpPort, router))
 }
