@@ -18,9 +18,9 @@ func Start() {
 	router.HandleFunc("/", appRoot)
 
 	/* NEW CODE
-	 */
 	//Set up router for /greet
 	router.HandleFunc("/greet", appGreet)
+	*/
 
 	// try to start the app and log output
 	log.Info("Starting server on port " + HttpPort)
