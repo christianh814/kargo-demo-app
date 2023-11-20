@@ -23,6 +23,6 @@ func Start() {
 	*/
 
 	// try to start the app and log output
-	log.Info("Starting server on port: " + HttpPort)
+	log.Info("Starting service on port: " + HttpPort)
 	log.Fatal(http.ListenAndServe(":"+HttpPort, router))
 }
