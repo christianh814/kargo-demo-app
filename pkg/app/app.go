@@ -14,7 +14,7 @@ func Start() {
 	//create/register a new request multiplexer
 	router := mux.NewRouter()
 
-	//Set up router for /
+	//Set up router handler for /
 	router.HandleFunc("/", appRoot)
 
 	/* NEW CODE
