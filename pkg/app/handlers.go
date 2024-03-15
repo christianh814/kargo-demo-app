@@ -1,8 +1,11 @@
 package app
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
+
+	"github.com/christianh814/kargo-demo-app/pkg/utils"
 )
 
 // AppConfig type
@@ -22,8 +25,6 @@ func appRoot(w http.ResponseWriter, r *http.Request) {
 	// Display index page from template - static for now
 	tmpl.Execute(w, config)
 }
-
-/* NEW CODE
 
 // Greet Struct
 type Greet struct {
@@ -53,4 +54,3 @@ func appGreet(w http.ResponseWriter, r *http.Request) {
 	// Display index page from template
 	tmpl.Execute(w, config)
 }
-*/
