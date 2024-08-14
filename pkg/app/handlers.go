@@ -23,7 +23,6 @@ func appRoot(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, config)
 }
 
-/* NEW CODE
 
 // Greet Struct
 type Greet struct {
@@ -53,4 +52,3 @@ func appGreet(w http.ResponseWriter, r *http.Request) {
 	// Display index page from template
 	tmpl.Execute(w, config)
 }
-*/
