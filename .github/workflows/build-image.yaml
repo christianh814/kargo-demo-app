@@ -1,14 +1,17 @@
-name: Build and Push Image to Quay
+name: Build and Push Image to ghcr
 on:
   push:
-    branches: [ main ]
-  pull_request:
     branches: [ main ]
 
 jobs:
   build:
     name: Build and push image
     runs-on: ubuntu-20.04
+    permissions:
+      packages: write
+      contents: read
+      attestations: write
+      id-token: write
 
     steps:
     - uses: actions/checkout@v4
@@ -20,22 +23,22 @@ jobs:
 
     - name: Build Image
       id: build-image
-      uses: redhat-actions/buildah-build@v2.12
+      uses: redhat-actions/buildah-build@v2
       with:
         image: kargo-demo-app
         tags: latest ${{ steps.set-vars.outputs.image_tag }}
         containerfiles: |
           ./Dockerfile
 
-    - name: Push To quay.io
-      id: push-to-quay
-      uses: redhat-actions/push-to-registry@v2.7
+    - name: Push To ghcr.io
+      id: push-to-ghcr
+      uses: redhat-actions/push-to-registry@v2
       with:
         image: ${{ steps.build-image.outputs.image }}
         tags: ${{ steps.build-image.outputs.tags }}
-        registry: quay.io/christianh814
+        registry: ghcr.io/christianh814
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
     - name: Print image url
-      run: echo "Image pushed to ${{ steps.push-to-quay.outputs.registry-paths }}"
+      run: echo "Image pushed to ${{ steps.push-to-ghcr.outputs.registry-paths }}"
