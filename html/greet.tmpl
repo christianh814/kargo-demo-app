@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Sample App for Kargo</title>
+        <title>Sample App for Kargo | Info</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/akuity/kargo/main/docs/static/img/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -20,7 +20,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                      <li class="nav-item"><a class="nav-link active" aria-current="page" href="/greet">Greet</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/greet">Greet</a></li>
                     </ul>
                 </div>
             </div>
@@ -28,21 +28,13 @@
         <!-- Page content-->
         <div class="container">
             <div class="text-center mt-5">
-                <h1>A Sample Go Application to demo Kargo</h1>
-                <br />
-                <div class="alert alert-info" role="alert">
-                    <h4 class="alert-heading">What is Kargo?</h4>
+                <h1>Application Greeting</h1>
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Important Message</h4>
+                    <hr />
                     <p>
-                      Kargo is a next-generation continuous delivery and
-                      application lifecycle orchestration platform for
-                      Kubernetes. It builds upon GitOps principles and
-                      integrates with existing technologies, like Argo
-                      CD, to streamline and automate the progressive
-                      rollout of changes across the many stages of an
-                      application's lifecycle.
+                      {{ .Msg }}
                     </p>
-                    <hr>
-                    <p class="mb-0">Find out more <a href="https://kargo.akuity.io/" target="new">HERE</a>.</p>
                 </div>
             </div>
         </div>
