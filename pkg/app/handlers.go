@@ -1,8 +1,11 @@
 package app
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
+
+	"github.com/christianh814/kargo-demo-app/pkg/utils"
 )
 
 // AppConfig type
@@ -30,3 +33,24 @@ type Greet struct {
 
 // GreetHtml is the template for the /greet route
 const GreetHtml string = "html/greet.tmpl"
+
+// App configuration file location
+const GreetConfigFile string = "config/greet.json"
+
+// appGreet is the route that returns the pod information
+func appGreet(w http.ResponseWriter, r *http.Request) {
+	tmpl := template.Must(template.ParseFiles(GreetHtml))
+	msg, err := utils.LoadConfig(GreetConfigFile)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		fmt.Fprintf(w, "Internal Error occurred")
+		return
+	}
+
+	config := Greet{
+		Msg: msg,
+	}
+
+	// Display index page from template
+	tmpl.Execute(w, config)
+}
