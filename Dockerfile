@@ -1,6 +1,10 @@
-# Build the App
+# Use Golang v1.21 as builder image`
 FROM golang:1.21.1 AS build
 
+# Add labels
+LABEL org.opencontainers.image.source https://github.com/christianh814/kargo-demo-app
+
+# Build the App
 WORKDIR /app
 
 COPY . .
