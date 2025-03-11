@@ -1,8 +1,11 @@
 package app
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
+
+	"github.com/christianh814/kargo-demo-app/pkg/utils"
 )
 
 // AppConfig type
@@ -34,7 +37,6 @@ const GreetHtml string = "html/greet.tmpl"
 // App configuration file location
 const GreetConfigFile string = "config/greet.json"
 
-/*
 // appGreet is the route that returns the pod information
 func appGreet(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles(GreetHtml))
@@ -52,4 +54,3 @@ func appGreet(w http.ResponseWriter, r *http.Request) {
 	// Display index page from template
 	tmpl.Execute(w, config)
 }
-*/
